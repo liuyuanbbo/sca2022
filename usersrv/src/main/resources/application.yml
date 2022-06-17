@@ -1,0 +1,5 @@
+server:
+  port: 9701
+spring:
+  application:
+    name: usersrv

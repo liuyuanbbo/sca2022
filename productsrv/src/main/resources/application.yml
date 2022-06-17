@@ -1,0 +1,5 @@
+server:
+  port: 9601
+spring:
+  application:
+    name: productsrv
