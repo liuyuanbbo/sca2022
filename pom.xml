@@ -11,6 +11,7 @@
         <module>ordersrv</module>
         <module>productsrv</module>
         <module>usersrv</module>
+        <module>eurekasrv</module>
     </modules>
 
     <properties>

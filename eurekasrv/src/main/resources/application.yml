@@ -1,0 +1,13 @@
+server:
+  port: 9961
+spring:
+  application:
+    name: eurekasrv
+eureka:
+  instance:
+    hostname: localhost #eureka 服务端实例名称
+  client:
+    register-with-eureka: false # 表示不向注册中心注册自己
+    fetch-registry: false # 表示自己就是注册中心 维护服务实例 不需要检索服务
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
