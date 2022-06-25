@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sca2022.eurekasrv.mapper.AccountMapper;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 @Service
@@ -18,7 +17,7 @@ public class TxService01 {
         int fromBalance = accountMapper.findBalanceBy(from);
         if (fromBalance - amount >= 0) {
             accountMapper.update(from, -1 * amount);
-            new FileInputStream("xxx");
+            //new FileInputStream("xxx");
             accountMapper.update(to, amount);
         }
     }
