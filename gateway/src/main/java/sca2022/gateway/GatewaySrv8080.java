@@ -1,4 +1,4 @@
-package sca2022.productsrv;
+package sca2022.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ProductSrv9601 {
+public class GatewaySrv8080 {
     public static void main(String[] args) {
-        SpringApplication.run(ProductSrv9601.class, args);
+        SpringApplication.run(GatewaySrv8080.class, args);
     }
 }

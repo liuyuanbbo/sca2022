@@ -1,5 +1,2 @@
 server:
   port: 9501
-spring:
-  application:
-    name: ordersrv

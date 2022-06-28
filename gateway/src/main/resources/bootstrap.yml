@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: on
+          lower-case-service-id: on
+      routes:
+        - id: usersrv
+          uri: lb://usersrv
+          predicates:
+            - Path=/user/**
+        - id: productsrv
+          uri: lb://productsrv
+          predicates:
+            - Path=/product/**
+        - id: ordersrv
+          uri: lb://ordersrv
+          predicates:
+            - Path=/order/**
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        namespace: a717bf23-98bf-42b5-9916-6c057f718bd6
