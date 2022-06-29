@@ -12,6 +12,7 @@
         <module>productsrv</module>
         <module>usersrv</module>
         <module>eurekasrv</module>
+        <module>leetcode</module>
         <module>gateway</module>
     </modules>
 
