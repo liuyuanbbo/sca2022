@@ -14,6 +14,7 @@
         <module>eurekasrv</module>
         <module>leetcode</module>
         <module>gateway</module>
+        <module>mybatis3</module>
     </modules>
 
     <properties>
