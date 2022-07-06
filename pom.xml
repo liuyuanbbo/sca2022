@@ -15,6 +15,7 @@
         <module>leetcode</module>
         <module>gateway</module>
         <module>mybatis3</module>
+        <module>netty4</module>
     </modules>
 
     <properties>
