@@ -1,13 +1,13 @@
 package sca2022.usersrv.test;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.charset.Charset;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Slf4j
 public class ReadFileTest {
@@ -26,6 +26,27 @@ public class ReadFileTest {
         log.info("{}", l1 == i1);
         log.info("{}", d1 == i1);
         log.info("{}", d1 == l1);
+    }
+
+    @Test
+    public void tst3() {
+        Map<Integer, String> map = new HashMap<>();
+
+        List<Integer> ints = new ArrayList<>();
+        Set<Integer> sets = new HashSet<>();
+
+
+        for (int i = 0; i < 30; i++) {
+            int r = RandomUtil.randomInt(1, 300);
+            ints.add(r);
+            sets.add(r);
+            map.put(r, r + "");
+        }
+
+        System.out.println(ints);
+        System.out.println(sets);
+        System.out.println(map.keySet());
+        System.out.println(map.values());
     }
 
     private void appendFile(File file) {
