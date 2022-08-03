@@ -17,6 +17,7 @@
         <module>mybatis3</module>
         <module>netty4</module>
         <module>Chapter01</module>
+        <module>spring5source</module>
     </modules>
 
     <properties>
