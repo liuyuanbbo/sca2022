@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.GenericApplicationContext;
 
 @Slf4j
-public class ATest {
+public class Ch01Test {
     public static void main(String[] args) {
         GenericApplicationContext ctx = new GenericApplicationContext();
         ctx.refresh();

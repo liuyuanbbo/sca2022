@@ -5,7 +5,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
     <logger name="spring5source" level="DEBUG"/>
 
     <root level="INFO">
