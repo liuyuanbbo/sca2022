@@ -19,6 +19,7 @@
         <module>Chapter01</module>
         <module>spring5source</module>
         <module>springboot-minio</module>
+        <module>toolstudy</module>
     </modules>
 
     <properties>
