@@ -22,7 +22,7 @@ public class Ch01AopTest {
 
     @Test
     public void testEcho() {
-        log.info("{}", applicationContext.getClass().getName());
+        log.info("111 {}", applicationContext.getClass().getName());
         log.info("{}", this.messageServiceImpl.getClass().getName());
         log.info("{}", this.messageServiceImpl.echo(" 易方达科技 https://efunds.com.cn "));
     }
