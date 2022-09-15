@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 public class TxService01 {
     private final AccountMapper accountMapper;
 
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void transfer(int from, int to, int amount) throws FileNotFoundException {
         int fromBalance = accountMapper.findBalanceBy(from);
         if (fromBalance - amount >= 0) {
