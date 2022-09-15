@@ -16,7 +16,7 @@
 
     <Loggers>
         <logger name="org.springframework" level="INFO"/>
-        <logger name="sca2022.eurekasrv" level="INFO"/>
+        <logger name="sca2022.eurekasrv" level="DEBUG"/>
 
         <Root level="INFO" includeLocation="true">
             <AppenderRef ref="Console"/>
