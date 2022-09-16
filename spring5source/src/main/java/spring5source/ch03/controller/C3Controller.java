@@ -12,11 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @Slf4j
 @RequestMapping("/c3")
 public class C3Controller {
+
+    private static final List<String> list = Collections.synchronizedList(new ArrayList<>());
 
     @RequestMapping("/m1")
     public void m1(@RequestBody PageForm form, @PageableDefault(page = 2, size = 200) Pageable pageable) {
@@ -28,7 +34,13 @@ public class C3Controller {
 
     @GetMapping("/m2")
     public String m2() {
+        list.add(UUID.randomUUID().toString());
         return "压测c3 m2接口";
+    }
+
+    @GetMapping("/m3")
+    public void m3() {
+        log.info("{}", list.size());
     }
 
     @Getter
