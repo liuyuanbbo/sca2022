@@ -6,6 +6,7 @@ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,11 @@ public class C3Controller {
             System.out.println(form);
             System.out.println(pageable);
         }
+    }
+
+    @GetMapping("/m2")
+    public String m2() {
+        return "压测c3 m2接口";
     }
 
     @Getter
