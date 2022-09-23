@@ -14,3 +14,7 @@ spring:
 security:
   antiReply:
     timestamp: 5
+
+ignore:
+  urls:
+    - /tst*

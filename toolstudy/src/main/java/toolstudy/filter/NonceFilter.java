@@ -1,13 +1,13 @@
 package toolstudy.filter;
 
 import cn.hutool.core.util.RandomUtil;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.BeanFactoryUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.method.HandlerMethod;
@@ -23,29 +23,47 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-@Component
-@RequiredArgsConstructor
+@Setter
+@Getter
 public class NonceFilter extends OncePerRequestFilter {
 
-    private static RequestMappingHandlerMapping requestMappingHandlerMapping;
+    private List<String> ignoreUrls;
 
-    @Value("${security.antiReply.timestamp:5}")
+    public NonceFilter(List<String> ignoreUrls) {
+        this.ignoreUrls = ignoreUrls;
+    }
+
+    private static AntPathMatcher antPathMatcher = new AntPathMatcher();
+
+    private static RequestMappingHandlerMapping requestMappingHandlerMapping;
     private Integer antiReplyTimestamp;
 
-    private final HandlerExceptionResolver handlerExceptionResolver;
-    private final StringRedisTemplate stringRedisTemplate;
+    private HandlerExceptionResolver handlerExceptionResolver;
+    private StringRedisTemplate stringRedisTemplate;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String requestURI = request.getRequestURI();
+        boolean flag = false;
+        for (String ignoreUrl : ignoreUrls) {
+            if (antPathMatcher.match(ignoreUrl, requestURI)) {
+                flag = true;
+                break;
+            }
+        }
+        if (flag) return;
+
+        log.info(">>>>>>>> 不在白名单内 执行过滤器");
+
         HandlerExecutionChain chain;
         if (requestMappingHandlerMapping == null) {
             requestMappingHandlerMapping = getRequestMappingHandlerMapping(request);
         }
-        String requestURI = request.getRequestURI();
         try {
             chain = requestMappingHandlerMapping.getHandler(request);
         } catch (Exception e) {
