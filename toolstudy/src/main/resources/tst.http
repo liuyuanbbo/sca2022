@@ -1,0 +1,7 @@
+POST http://localhost:9502/4/tst4
+cusName: 来饭否你
+Content-Type: application/json
+
+{
+  "name": "龙三"
+}
