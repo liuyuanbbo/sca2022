@@ -3,6 +3,7 @@ package sb.minio.a;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/a01")
+@Slf4j
 public class A1Controller {
 
     @PostMapping("/01")
@@ -23,7 +25,9 @@ public class A1Controller {
 
     @PostMapping("/02")
     public String a1_02(@RequestBody Form2 form2) {
-        return ReflectionToStringBuilder.toString(form2, ToStringStyle.MULTI_LINE_STYLE);
+        String jsonStr = ReflectionToStringBuilder.toString(form2, ToStringStyle.MULTI_LINE_STYLE);
+        log.info("{}", jsonStr);
+        return jsonStr;
     }
 
     @Getter
