@@ -1,6 +1,7 @@
 package sb.minio.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -14,6 +15,8 @@ import java.io.IOException;
 @Slf4j
 public class HeaderFilter extends OncePerRequestFilter {
 
+    @Value("${head.jsId}")
+    private String jsId;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -22,7 +25,7 @@ public class HeaderFilter extends OncePerRequestFilter {
         String certId = request.getHeader("certId");
         String cusName = request.getHeader("cusName");
         String name = request.getParameter("name");
-        log.info("{} {} {}", certId, cusName, name);
+        log.info("jdId: {} >>> {} {} {}", jsId, certId, cusName, name);
         filterChain.doFilter(request, response);
     }
 }
