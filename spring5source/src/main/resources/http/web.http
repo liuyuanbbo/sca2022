@@ -1,0 +1,2 @@
+### 跳转百度
+GET http://localhost:8090/baidu?url=http://www.baidu.com

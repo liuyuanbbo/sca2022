@@ -1,11 +1,15 @@
 package spring5source.ch01.test;
 
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 public class ATest {
     @Test
     public void t1() {
@@ -22,5 +26,17 @@ public class ATest {
         System.arraycopy(strArr, 0, newArr, 1, strArr.length);
         newArr[0] = "test";
         System.out.println(Arrays.toString(newArr));
+    }
+
+    @Test
+    public void t3() throws UnsupportedEncodingException {
+        String s1 = "Hello";
+        String s2 = "你好";
+        String encodeS1 = URLEncoder.encode(s1, "utf-8");
+        String encodeS2 = URLEncoder.encode(s2, "utf-8");
+
+        log.info("{}", encodeS1);
+        log.info("{}", encodeS2);
+
     }
 }
