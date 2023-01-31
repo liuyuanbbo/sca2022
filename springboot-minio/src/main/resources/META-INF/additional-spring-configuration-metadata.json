@@ -3,7 +3,7 @@
     {
       "name": "head.jsId",
       "type": "java.lang.String",
-      "description": "head jsId"
+      "description": "head jsId."
     }
   ]
 }

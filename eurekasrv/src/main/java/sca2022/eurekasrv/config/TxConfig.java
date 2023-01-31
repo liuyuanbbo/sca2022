@@ -1,6 +1,8 @@
 package sca2022.eurekasrv.config;
 
 import com.zaxxer.hikari.HikariDataSource;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -28,7 +30,9 @@ public class TxConfig {
     @Bean
     @ConfigurationProperties("jdbc")
     public DataSource dataSource() {
-        return new HikariDataSource();
+        HikariDataSource hikariDataSource = new HikariDataSource();
+        System.out.println(ReflectionToStringBuilder.toString(hikariDataSource, ToStringStyle.MULTI_LINE_STYLE));
+        return hikariDataSource;
     }
 
     @Bean
