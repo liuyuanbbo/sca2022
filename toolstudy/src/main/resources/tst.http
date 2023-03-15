@@ -1,7 +1,17 @@
+###
 POST http://localhost:9502/4/tst4
 cusName: 来饭否你
 Content-Type: application/json
 
 {
   "name": "龙三"
+}
+
+
+###
+POST http://localhost:9502/event/email
+Content-Type: application/json
+
+{
+  "email": "190@qq.com"
 }
